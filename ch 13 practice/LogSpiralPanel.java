@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Arc2D;
 import javax.swing.JPanel;
@@ -9,7 +10,22 @@ public class LogSpiralPanel extends JPanel
 
     public void paintComponent(Graphics g)
     {
-        
+        /* Your code goes here.
+        1. Compute the dimensions of the goldenRectangle (you can use getHeight() 
+        to obtain the side size)
+         */
+        Graphics2D g2 = (Graphics2D) g;
+
+        Rectangle golden = new Rectangle(100,100,750,500);
+        /*
+        2. Draw the golden rectangle
+         */
+        g2.draw(golden);
+        /*
+        3. Call the recursive helper method "recursiveDraw" which will draw 
+        the spiral.
+         */
+        recursiveDraw(g2,100,100,500,90);
     }
 
     /**
@@ -21,18 +37,23 @@ public class LogSpiralPanel extends JPanel
     current golden rectangle is located. For the outermost golden 
     rectangle, the angle is 90.
      */
-    private void recursiveDraw(Graphics g, double x, double y, double side, int angle)
+    private void recursiveDraw(Graphics2D g2, double x, double y, double side, int angle)
     {
         // Recursion ending condition: when the side is very small
-        
-
+        int side2 = (int)side;
+        if(side <= 1)
+        {
+            return;
+        }
         // Draw the current square and arc
-        
-
+        else
+        {
+            //Rectangle square = new Rectangle( calculateNewX(x,angle,side,, , side2, side2)
+        }
         /* Continue drawing the spiral recursively: calculate the new side 
         size, calculate the new (x, y) coordinates and the new angle. Then, 
         call "recursiveDraw" again. */
-        
+
     }
 
     /**
@@ -44,7 +65,7 @@ public class LogSpiralPanel extends JPanel
     current golden rectangle is located. For the outermost golden 
     rectangle, the angle is 90.
      */
-    private void drawArc(Graphics g, double x, double y, double side, int angle)
+    private void drawArc(Graphics2D g2, double x, double y, double side, int angle)
     {
         double auxX = x;
         double auxY = y;
@@ -56,7 +77,7 @@ public class LogSpiralPanel extends JPanel
         {
             auxY = y - side;
         }
-        g.drawArc((int) auxX, (int) auxY, (int) side * 2, (int) side * 2, angle, 90);
+        g2.drawArc((int) auxX, (int) auxY, (int) side * 2, (int) side * 2, angle, 90);
     }   
 
     private double calculateNewX(double x, double angle, double side, double newSide)
