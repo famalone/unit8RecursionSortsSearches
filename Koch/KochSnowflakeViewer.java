@@ -80,7 +80,7 @@ public class KochSnowflakeViewer implements ActionListener
     public void actionPerformed (ActionEvent event)
     {
         int order = drawing.getOrder();
-
+        
         if (event.getSource() == increase)
             order++;
         else
