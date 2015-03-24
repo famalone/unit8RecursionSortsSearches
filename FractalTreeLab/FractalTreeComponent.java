@@ -25,5 +25,17 @@ public class FractalTreeComponent extends JComponent
         setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
     }
     
-    public void drawFractal(int order,
+    public void drawFractal(int order,int x1,int y1, int x2, int y2, Graphics page)
+    {
+        if(order == 1)
+            page.drawLine(x1, y1, x2, y2);
+        else if(order >= 500)
+        {
+            return;
+        }
+        else
+        {
+            
+        }
+    }
 }
